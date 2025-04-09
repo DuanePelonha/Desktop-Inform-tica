@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manutenção de PCs e Notebooks</title>
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    rel="stylesheet"
+  />
+  <style>
+    body {
+      background-color: #1e293b;
+      color: white;
+      font-family: Arial, sans-serif;
+      padding: 2rem;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .servico {
+      background-color: #334155;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 2rem;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .servico img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .servico-conteudo {
+      padding: 1rem;
+    }
+
+    .servico-conteudo h2 {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .servico-conteudo p {
+      color: #cbd5e1;
+    }
+
+    .back-link {
+      color: #60a5fa;
+      text-decoration: none;
+      margin-top: 2rem;
+      display: inline-block;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: #0f172a;
+      color: #94a3b8;
+      font-size: 0.9rem;
+    }
+
+    @media (min-width: 768px) {
+      .servico {
+        flex-direction: row;
+      }
+
+      .servico img {
+        width: 300px;
+        height: auto;
+      }
+
+      .servico-conteudo {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1><i class="fas fa-tools"></i> Manutenção de PCs e Notebooks</h1>
+
+  <div class="servico">
+    <img src="diagnostico.jpg" alt="Formatação de computador" />
+    <div class="servico-conteudo">
+      <h2>Formatação com backup</h2>
+      <p>Deixe seu computador como novo! Realizamos formatação com backup dos seus arquivos importantes.</p>
+    </div>
+  </div>
+
+  <div class="servico">
+    <img src="limpeza.jpg" alt="Limpeza de notebook" />
+    <div class="servico-conteudo">
+      <h2>Limpeza interna e externa</h2>
+      <p>Evite superaquecimento e preserve a vida útil do seu equipamento com limpezas regulares.</p>
+    </div>
+  </div>
+
+  <div class="servico">
+    <img src="atualizacao.jpg" alt="Troca de HD por SSD" />
+    <div class="servico-conteudo">
+      <h2>Upgrade de hardware</h2>
+      <p>Melhore o desempenho com troca de HD para SSD, aumento de memória e muito mais.</p>
+    </div>
+  </div>
+
+  <div class="servico">
+    <img src="remocao.jpg" alt="Remoção de vírus" />
+    <div class="servico-conteudo">
+      <h2>Remoção de vírus</h2>
+      <p>Removemos malwares, trojans e spywares que podem comprometer sua segurança.</p>
+    </div>
+  </div>
+
+  <a href="../index.html" class="back-link">← Voltar para a página inicial</a>
+
+  <footer>
+    © 2020 Desktop Informática. Todos os direitos reservados.
+  </footer>
+
+</body>
+</html>
