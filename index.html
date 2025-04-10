@@ -133,6 +133,43 @@ header h1 {
     font-size: 2rem;
   }
 }
+.contato-info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  }
+
+.contato,
+.info-box {
+  flex: 1 1 250px;
+  max-width: 400px;
+  background-color: #1e293b;
+  padding: 1rem;
+  border-radius: 10px;
+  color: #e2e8f0;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+  font-size: 0.95rem;
+}
+
+.contato h2,
+.info-box h2 {
+  font-size: 1.2rem;
+  margin-bottom: 0.75rem;
+}
+
+.info-box p {
+  line-height: 1.5;
+  margin-bottom: 0.75rem;
+  font-size: 0.95rem;
+}
+
+.btn-whatsapp {
+  font-size: 1rem;
+  padding: 0.6rem 1rem;
+}
+
 
   </style>
 </head>
@@ -161,26 +198,42 @@ header h1 {
     </a>
    </section>
 
-  <section class="contato">
-    <h2>Fale conosco</h2>
-    <p>Escaneie o QR Code ou clique abaixo para falar no WhatsApp:</p>
-    
-    <img
-    src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://wa.me/5584981185748"
-    alt="QR Code WhatsApp"
-    style="margin: 1rem auto; display: block;"
-  />
+   <div class="contato-info">
+    <section class="contato">
+      <h2>Fale conosco</h2>
+      <p>Escaneie o QR Code ou clique abaixo para falar no WhatsApp:</p>
   
+      <img
+        src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://wa.me/5584981185748"
+        alt="QR Code WhatsApp"
+        style="margin: 1rem auto; display: block;"
+      />
   
-    <a
-      class="btn-whatsapp"
-      href="https://wa.me/5584981185748"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      <i class="fab fa-whatsapp"></i> Falar no WhatsApp
-    </a>
-  </section>
+      <a
+        class="btn-whatsapp"
+        href="https://wa.me/5584981185748"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <i class="fab fa-whatsapp"></i> Falar no WhatsApp
+      </a>
+    </section>
+  
+    <div class="info-box">
+      <h2>Informações da Empresa</h2>
+      <p><strong>Endereço:</strong><br>
+        Rua Parque das Nações, 278<br>
+        Bairro Nossa Senhora da Apresentação<br>
+        Natal - RN, CEP 59114-380</p>
+  
+      <p><strong>Dias de Funcionamento:</strong><br>
+        Segunda a Sábado</p>
+  
+      <p><strong>Horário de Atendimento:</strong><br>
+        08:00 às 18:00</p>
+    </div>
+  </div>
+  
   
 
   <footer>
