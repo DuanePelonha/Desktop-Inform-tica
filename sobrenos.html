@@ -55,6 +55,55 @@
         padding: 1.5rem;
       }
     }
+   .orcamento {
+  background-color: #f1f5f9;
+  padding: 2rem;
+  text-align: center;
+}
+
+.orcamento h2 {
+  font-size: 1.8rem;
+  color: #0f172a;
+  margin-bottom: 1rem;
+}
+
+.orcamento form {
+  max-width: 500px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.orcamento input,
+.orcamento textarea {
+  padding: 0.75rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 1rem;
+  width: 100%;
+}
+
+.orcamento textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.orcamento button {
+  background-color: #25D366;
+  color: white;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.orcamento button:hover {
+  background-color: #1ebc59;
+}
+
   </style>
 </head>
 <body>
@@ -71,11 +120,39 @@
     <p>Se você busca um parceiro de confiança para cuidar da parte técnica enquanto você foca no que realmente importa, pode contar com a Desktop Informática.</p>
   </div>
 
+<section class="orcamento">
+  <h2>Solicite um Orçamento</h2>
+  <form id="formOrcamento">
+    <input type="text" id="nome" placeholder="Seu nome" required>
+    <input type="tel" id="telefone" placeholder="Seu telefone">
+    <textarea id="mensagem" placeholder="Descreva seu problema ou serviço desejado" required></textarea>
+    <button type="submit">Enviar pelo WhatsApp</button>
+  </form>
+</section>
+
+
+ 
   <a href="index.html" class="back-link">← Voltar para a página inicial</a>
 
     <footer>
     © 2020 Desktop Informática. Todos os direitos reservados.
   </footer>
-  
+  <script>
+  document.getElementById("formOrcamento").addEventListener("submit", function(e) {
+    e.preventDefault();
+    
+    const nome = document.getElementById("nome").value;
+    const telefone = document.getElementById("telefone").value;
+    const mensagem = document.getElementById("mensagem").value;
+    
+    const texto = `Olá! Gostaria de solicitar um orçamento.%0A%0A*Nome:* ${nome}%0A*Telefone:* ${telefone}%0A*Serviço:* ${mensagem}`;
+    
+    const numero = "5584981185748"; // seu número com DDI
+    const url = `https://wa.me/${numero}?text=${texto}`;
+    
+    window.open(url, "_blank");
+  });
+</script>
+
 </body>
 </html>
