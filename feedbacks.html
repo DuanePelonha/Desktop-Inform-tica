@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Avaliações dos Clientes | Desktop Informática</title>
+
+  <meta name="description" content="Veja as avaliações dos clientes da Desktop Informática e deixe sua opinião sobre nosso atendimento.">
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom right, #020617, #0f172a);
+      color: white;
+      min-height: 100vh;
+    }
+
+    header {
+      background-color: #020617;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .logo {
+      max-width: 900px;
+      width: 100%;
+    }
+
+    h1, h2 {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .feedbacks {
+      max-width: 1100px;
+      margin: 2rem auto;
+      padding: 1rem;
+      display: grid;
+      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+
+    .card {
+      background-color: #1e293b;
+      padding: 1.5rem;
+      border-radius: 1rem;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+    }
+
+    .stars {
+      color: #facc15;
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .cliente {
+      font-weight: bold;
+      color: #38bdf8;
+      margin-top: 0.5rem;
+    }
+
+    /* FORMULÁRIO */
+    .avaliacao {
+      background-color: #020617;
+      padding: 2rem 1rem;
+      margin-top: 3rem;
+    }
+
+    .form-box {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #1e293b;
+      padding: 2rem;
+      border-radius: 1rem;
+    }
+
+    label {
+      display: block;
+      margin-top: 1rem;
+      margin-bottom: 0.3rem;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 0.7rem;
+      border-radius: 8px;
+      border: none;
+      font-size: 1rem;
+    }
+
+    textarea {
+      resize: none;
+      height: 100px;
+    }
+
+    .star-select {
+      display: flex;
+      gap: 0.4rem;
+      font-size: 1.8rem;
+      cursor: pointer;
+      color: #475569;
+    }
+
+    .star-select i.active {
+      color: #facc15;
+    }
+
+    .btn-enviar {
+      margin-top: 1.5rem;
+      width: 100%;
+      background-color: #25d366;
+      color: white;
+      padding: 0.8rem;
+      border: none;
+      border-radius: 999px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: #020617;
+      color: #94a3b8;
+      font-size: 0.9rem;
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <img src="Ativo 7.png" alt="Desktop Informática" class="logo">
+</header>
+
+<h1>⭐ Avaliações dos nossos clientes</h1>
+
+<section class="feedbacks">
+  <div class="card">
+    <div class="stars">★★★★★</div>
+    <p>“Atendimento excelente, rápido e honesto.”</p>
+    <div class="cliente">Carlos H.</div>
+  </div>
+
+  <div class="card">
+    <div class="stars">★★★★★</div>
+    <p>“Meu notebook ficou perfeito. Recomendo muito.”</p>
+    <div class="cliente">Mariana S.</div>
+  </div>
+
+  <div class="card">
+    <div class="stars">★★★★★</div>
+    <p>“Empresa séria e confiável. Sempre resolvem.”</p>
+    <div class="cliente">João P.</div>
+  </div>
+</section>
+
+<!-- FORMULÁRIO -->
+<section class="avaliacao">
+  <h2>📝 Avalie nosso atendimento</h2>
+
+  <div class="form-box">
+    <label>Seu nome</label>
+    <input type="text" id="nome" placeholder="Ex: João Silva">
+
+    <label>Quantas estrelas?</label>
+    <div class="star-select" id="estrelas">
+      <i class="fas fa-star" data-value="1"></i>
+      <i class="fas fa-star" data-value="2"></i>
+      <i class="fas fa-star" data-value="3"></i>
+      <i class="fas fa-star" data-value="4"></i>
+      <i class="fas fa-star" data-value="5"></i>
+    </div>
+
+    <label>Sua opinião</label>
+    <textarea id="mensagem" placeholder="Conte como foi sua experiência..."></textarea>
+
+    <button class="btn-enviar" onclick="enviarFeedback()">
+      Enviar avaliação
+    </button>
+  </div>
+</section>
+
+<footer>
+  © 2020 Desktop Informática. Todos os direitos reservados.
+</footer>
+
+<script>
+  let estrelasSelecionadas = 0;
+  const estrelas = document.querySelectorAll('.star-select i');
+
+  estrelas.forEach(star => {
+    star.addEventListener('click', () => {
+      estrelasSelecionadas = star.dataset.value;
+      estrelas.forEach(s => s.classList.remove('active'));
+      for (let i = 0; i < estrelasSelecionadas; i++) {
+        estrelas[i].classList.add('active');
+      }
+    });
+  });
+
+  function enviarFeedback() {
+    const nome = document.getElementById('nome').value;
+    const mensagem = document.getElementById('mensagem').value;
+
+    if (!nome || !mensagem || estrelasSelecionadas == 0) {
+      alert("Por favor, preencha todos os campos.");
+      return;
+    }
+
+    const texto = 
+`⭐ Avaliação Desktop Informática ⭐
+
+Nome: ${nome}
+Estrelas: ${estrelasSelecionadas}/5
+
+Mensagem:
+"${mensagem}"`;
+
+    const url = `https://wa.me/5584981185748?text=${encodeURIComponent(texto)}`;
+    window.open(url, "_blank");
+  }
+</script>
+
+</body>
+</html>
