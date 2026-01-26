@@ -155,6 +155,24 @@
   color: #020617;
   transform: translateX(-4px);
 }
+    .avaliacao {
+  padding: 3rem 1rem;
+  text-align: center;
+}
+
+.form-container {
+  display: flex;
+  justify-content: center;
+}
+
+.form-container iframe {
+  width: 100%;
+  max-width: 640px; /* largura ideal do formulário */
+  height: 700px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+}
+
 
   </style>
 </head>
@@ -196,65 +214,21 @@
 <section class="avaliacao">
   <h2>📝 Avalie nosso atendimento</h2>
 
-<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeqBGURR2LDBbWcHtMWjOu4v0qkl-Pxb6V4nvtDaQEWFty_eg/viewform?embedded=true"
-  width="640"
-  height="1009"
+  <div class="form-container">
+<iframe 
+  src="https://docs.google.com/forms/d/e/1FAIpQLSeqBGURR2LDBbWcHtMWjOu4v0qkl-Pxb6V4nvtDaQEWFty_eg/viewform?embedded=true" 
   frameborder="0"
   marginheight="0"
-  marginwidth="0">Carregando…
+  marginwidth="0">
+  Carregando…
 </iframe>
-  
+  </div>
 </section>
 
-
-</section>
 
 <footer>
   © 2020 Desktop Informática. Todos os direitos reservados.
 </footer>
-
-<script>
-  let estrelasSelecionadas = 0;
-  const estrelas = document.querySelectorAll('.star-select i');
-
-  estrelas.forEach(star => {
-    star.addEventListener('click', () => {
-      estrelasSelecionadas = star.dataset.value;
-      estrelas.forEach(s => s.classList.remove('active'));
-      for (let i = 0; i < estrelasSelecionadas; i++) {
-        estrelas[i].classList.add('active');
-      }
-    });
-  });
-
-  function enviarFeedback() {
-    const nome = document.getElementById('nome').value;
-    const mensagem = document.getElementById('mensagem').value;
-
-    if (!nome || !mensagem || estrelasSelecionadas == 0) {
-      alert("Por favor, preencha todos os campos.");
-      return;
-    }
-
-    const texto = 
-`⭐ Avaliação Desktop Informática ⭐
-
-Nome: ${nome}
-Estrelas: ${estrelasSelecionadas}/5
-
-Mensagem:
-"${mensagem}"`;
-
-    const url = `https://wa.me/5584981185748?text=${encodeURIComponent(texto)}`;
-    window.open(url, "_blank");
-  }
-</script>
-
-   <a href="index.html" class="back-link">← Voltar para a página inicial</a>
-
-  <footer>
-    © 2020 Desktop Informática. Todos os direitos reservados.
-  </footer>
   
 </body>
 </html>
