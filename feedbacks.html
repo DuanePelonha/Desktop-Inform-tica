@@ -61,103 +61,35 @@
       margin-top: 0.5rem;
     }
 
-    /* FORMULÁRIO */
-    .avaliacao {
-      background-color: #020617;
-      padding: 2rem 1rem;
-      margin-top: 3rem;
-    }
-
-    .form-box {
-      max-width: 600px;
-      margin: 0 auto;
-      background-color: #1e293b;
-      padding: 2rem;
-      border-radius: 1rem;
-    }
-
-    label {
-      display: block;
-      margin-top: 1rem;
-      margin-bottom: 0.3rem;
-    }
-
-    input, textarea {
-      width: 100%;
-      padding: 0.7rem;
-      border-radius: 8px;
-      border: none;
-      font-size: 1rem;
-    }
-
-    textarea {
-      resize: none;
-      height: 100px;
-    }
-
-    .star-select {
-      display: flex;
-      gap: 0.4rem;
-      font-size: 1.8rem;
-      cursor: pointer;
-      color: #475569;
-    }
-
-    .star-select i.active {
-      color: #facc15;
-    }
-
-    .btn-enviar {
-      margin-top: 1.5rem;
-      width: 100%;
-      background-color: #25d366;
-      color: white;
-      padding: 0.8rem;
-      border: none;
-      border-radius: 999px;
-      font-size: 1.1rem;
-      cursor: pointer;
-      font-weight: bold;
-    }
-
-    footer {
-      text-align: center;
-      padding: 1rem;
-      background-color: #020617;
-      color: #94a3b8;
-      font-size: 0.9rem;
-      margin-top: 3rem;
-    }
-    .top-bar {
-  position: sticky;
-  top: 0;
-  background-color: #020617;
-  padding: 0.8rem 1rem;
-  z-index: 1000;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.6);
+ .avaliacao-impacto {
+  padding: 4rem 1rem;
+  display: flex;
+  justify-content: center;
+  background: radial-gradient(circle at top, #1e293b, #020617);
 }
 
-.btn-voltar {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  background-color: #1e293b;
-  color: #e5e7eb;
-  padding: 0.5rem 1.2rem;
-  border-radius: 999px;
-  text-decoration: none;
-  font-weight: bold;
-  transition: all 0.3s ease;
+.avaliacao-card {
+  background: linear-gradient(145deg, #0f172a, #020617);
+  max-width: 720px;
+  width: 100%;
+  padding: 2.5rem 2rem;
+  border-radius: 24px;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.05),
+    0 0 40px rgba(56,189,248,0.25);
+  animation: aparecer 0.8s ease-out;
 }
 
-.btn-voltar:hover {
-  background-color: #38bdf8;
-  color: #020617;
-  transform: translateX(-4px);
-}
-    .avaliacao {
-  padding: 3rem 1rem;
+.avaliacao-card h2 {
   text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.subtexto {
+  text-align: center;
+  color: #94a3b8;
+  margin-bottom: 2rem;
 }
 
 .form-container {
@@ -167,11 +99,23 @@
 
 .form-container iframe {
   width: 100%;
-  max-width: 640px; /* largura ideal do formulário */
-  height: 700px;
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+  max-width: 640px;
+  height: 720px;
+  border-radius: 16px;
+  background: white;
 }
+
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 
 
   </style>
@@ -211,19 +155,26 @@
   </div>
 </section>
 
-<section class="avaliacao">
-  <h2>📝 Avalie nosso atendimento</h2>
+<section class="avaliacao-impacto">
+  <div class="avaliacao-card">
+    <h2>⭐ Sua opinião faz a diferença</h2>
 
-  <div class="form-container">
-<iframe 
-  src="https://docs.google.com/forms/d/e/1FAIpQLSeqBGURR2LDBbWcHtMWjOu4v0qkl-Pxb6V4nvtDaQEWFty_eg/viewform?embedded=true" 
-  frameborder="0"
-  marginheight="0"
-  marginwidth="0">
-  Carregando…
-</iframe>
+    <p class="subtexto">
+      Leva menos de 1 minuto e nos ajuda a oferecer um atendimento cada vez melhor.
+    </p>
+
+    <div class="form-container">
+      <iframe 
+        src="https://docs.google.com/forms/d/e/1FAIpQLSeqBGURR2LDBbWcHtMWjOu4v0qkl-Pxb6V4nvtDaQEWFty_eg/viewform?embedded=true"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0">
+        Carregando…
+      </iframe>
+    </div>
   </div>
 </section>
+
 
 
 <footer>
