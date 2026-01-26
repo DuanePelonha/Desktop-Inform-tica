@@ -194,66 +194,61 @@ header h1 {
 .social-icons a:hover {
   color: #25d366; /* WhatsApp verde para todos, ou personalize */
 }
-.feedback-destaque {
-  background: linear-gradient(135deg, #020617, #0f172a);
-  padding: 3rem 1.5rem;
+.feedback-clean {
+  background: linear-gradient(to bottom, #f8fafc, #e2e8f0);
+  padding: 4rem 1.5rem;
   text-align: center;
-  box-shadow: inset 0 0 40px rgba(0,0,0,0.6);
 }
 
-.feedback-destaque h2 {
-  font-size: 1.6rem;
+.feedback-clean h2 {
+  font-size: 1.8rem;
+  color: #020617;
   margin-bottom: 2rem;
 }
 
-.carousel {
-  max-width: 700px;
+.feedback-box {
+  max-width: 600px;
   margin: 0 auto 2rem;
-  position: relative;
-}
-
-.slide {
-  display: none;
-  animation: fade 1s ease-in-out;
-}
-
-.slide.active {
-  display: block;
+  background: white;
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
 }
 
 .stars {
   color: #facc15;
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   margin-bottom: 0.5rem;
 }
 
-.slide p {
+.feedback-text {
   font-size: 1.1rem;
   font-style: italic;
+  color: #334155;
   margin-bottom: 0.5rem;
-  color: #e5e7eb;
 }
 
-.slide span {
-  color: #38bdf8;
+.cliente {
+  color: #0ea5e9;
   font-weight: bold;
 }
 
-.btn-feedbacks {
+.btn-feedback-clean {
   display: inline-block;
   background-color: #facc15;
   color: #020617;
-  padding: 0.7rem 1.6rem;
+  padding: 0.7rem 1.8rem;
   border-radius: 999px;
   font-weight: bold;
   text-decoration: none;
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition: all 0.3s ease;
 }
 
-.btn-feedbacks:hover {
-  transform: scale(1.08);
-  box-shadow: 0 0 20px rgba(250, 204, 21, 0.8);
+.btn-feedback-clean:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(250,204,21,0.4);
 }
+
 
 @keyframes fade {
   from { opacity: 0; transform: translateY(10px); }
@@ -289,33 +284,22 @@ header h1 {
     </a>
    </section>
 
-  <section class="feedback-destaque">
+<section class="feedback-clean">
   <h2>⭐ Clientes satisfeitos falam por nós</h2>
 
-  <div class="carousel">
-    <div class="slide active">
-      <div class="stars">★★★★★</div>
-      <p>“Atendimento rápido, honesto e muito profissional.”</p>
-      <span>— Carlos H.</span>
-    </div>
-
-    <div class="slide">
-      <div class="stars">★★★★★</div>
-      <p>“Meu notebook ficou como novo. Recomendo sem medo.”</p>
-      <span>— Mariana S.</span>
-    </div>
-
-    <div class="slide">
-      <div class="stars">★★★★★</div>
-      <p>“Serviço de confiança. Sempre resolvem meus problemas.”</p>
-      <span>— João P.</span>
-    </div>
+  <div class="feedback-box">
+    <div class="stars">★★★★★</div>
+    <p class="feedback-text">
+      “Serviço de confiança. Sempre resolvem meus problemas.”
+    </p>
+    <span class="cliente">— João P.</span>
   </div>
 
-  <a href="feedbacks.html" class="btn-feedbacks">
+  <a href="feedbacks.html" class="btn-feedback-clean">
     Ver todos os feedbacks
   </a>
 </section>
+
 
    <div class="contato-info">
     <section class="contato">
@@ -382,6 +366,7 @@ header h1 {
 
 </body>
 </html>
+
 
 
 
