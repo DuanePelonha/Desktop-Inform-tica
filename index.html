@@ -194,6 +194,71 @@ header h1 {
 .social-icons a:hover {
   color: #25d366; /* WhatsApp verde para todos, ou personalize */
 }
+.feedback-destaque {
+  background: linear-gradient(135deg, #020617, #0f172a);
+  padding: 3rem 1.5rem;
+  text-align: center;
+  box-shadow: inset 0 0 40px rgba(0,0,0,0.6);
+}
+
+.feedback-destaque h2 {
+  font-size: 1.6rem;
+  margin-bottom: 2rem;
+}
+
+.carousel {
+  max-width: 700px;
+  margin: 0 auto 2rem;
+  position: relative;
+}
+
+.slide {
+  display: none;
+  animation: fade 1s ease-in-out;
+}
+
+.slide.active {
+  display: block;
+}
+
+.stars {
+  color: #facc15;
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+}
+
+.slide p {
+  font-size: 1.1rem;
+  font-style: italic;
+  margin-bottom: 0.5rem;
+  color: #e5e7eb;
+}
+
+.slide span {
+  color: #38bdf8;
+  font-weight: bold;
+}
+
+.btn-feedbacks {
+  display: inline-block;
+  background-color: #facc15;
+  color: #020617;
+  padding: 0.7rem 1.6rem;
+  border-radius: 999px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.btn-feedbacks:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 20px rgba(250, 204, 21, 0.8);
+}
+
+@keyframes fade {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
 
 
@@ -222,12 +287,35 @@ header h1 {
       <h3>Sobre nós</h3>
       <p>Somos uma equipe apaixonada por tecnologia, com anos de experiência em soluções de informática.</p>
     </a>
-    <a href="feedbacks.html" class="card">
-      <i class="fas fa-star" style="color: #facc15;"></i>
-      <h3>Feedbacks dos Clientes</h3>
-      <p>Veja a opinião de quem já confia na Desktop Informática.</p>
-   </a>
    </section>
+
+  <section class="feedback-destaque">
+  <h2>⭐ Clientes satisfeitos falam por nós</h2>
+
+  <div class="carousel">
+    <div class="slide active">
+      <div class="stars">★★★★★</div>
+      <p>“Atendimento rápido, honesto e muito profissional.”</p>
+      <span>— Carlos H.</span>
+    </div>
+
+    <div class="slide">
+      <div class="stars">★★★★★</div>
+      <p>“Meu notebook ficou como novo. Recomendo sem medo.”</p>
+      <span>— Mariana S.</span>
+    </div>
+
+    <div class="slide">
+      <div class="stars">★★★★★</div>
+      <p>“Serviço de confiança. Sempre resolvem meus problemas.”</p>
+      <span>— João P.</span>
+    </div>
+  </div>
+
+  <a href="feedbacks.html" class="btn-feedbacks">
+    Ver todos os feedbacks
+  </a>
+</section>
 
    <div class="contato-info">
     <section class="contato">
@@ -281,8 +369,19 @@ header h1 {
   <footer>
     © 2020 Desktop Informática. Todos os direitos reservados.
   </footer>
+<script>
+  const slides = document.querySelectorAll('.slide');
+  let index = 0;
+
+  setInterval(() => {
+    slides[index].classList.remove('active');
+    index = (index + 1) % slides.length;
+    slides[index].classList.add('active');
+  }, 4000);
+</script>
 
 </body>
 </html>
+
 
 
