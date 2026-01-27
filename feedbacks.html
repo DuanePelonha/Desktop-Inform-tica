@@ -191,14 +191,6 @@
   </div>
 </section>
   
-<section class="feedback-section">
-  <h2>⭐ O que nossos clientes dizem</h2>
-
-  <div id="feedbackGrid" class="feedback-grid">
-    <!-- Cards gerados automaticamente -->
-  </div>
-</section>
-
 <section class="avaliacao-impacto">
   <div class="avaliacao-card">
     <h2>⭐ Sua opinião faz a diferença</h2>
@@ -218,33 +210,6 @@
     </div>
   </div>
 </section>
-
-<script>
-fetch('feedbacks.json')
-  .then(response => response.json())
-  .then(data => {
-    const grid = document.getElementById('feedbackGrid');
-
-    data
-      .filter(feedback => feedback.nota >= 4)
-      .forEach(feedback => {
-        const card = document.createElement('div');
-        card.classList.add('feedback-card');
-
-        card.innerHTML = `
-          <div class="stars">${'★'.repeat(feedback.nota)}</div>
-          <p class="feedback-text">“${feedback.comentario}”</p>
-          <span class="cliente">— ${feedback.nome}</span>
-        `;
-
-        grid.appendChild(card);
-      });
-  })
-  .catch(error => {
-    console.error('Erro ao carregar feedbacks:', error);
-  });
-</script>
-
 
 <footer>
   © 2020 Desktop Informática. Todos os direitos reservados.
