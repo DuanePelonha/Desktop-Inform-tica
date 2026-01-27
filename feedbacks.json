@@ -1,0 +1,17 @@
+[
+  {
+    "nome": "João P.",
+    "comentario": "Serviço rápido e confiável!",
+    "nota": 5
+  },
+  {
+    "nome": "Maria S.",
+    "comentario": "Atendimento excelente.",
+    "nota": 4
+  },
+  {
+    "nome": "Carlos A.",
+    "comentario": "Demorou um pouco.",
+    "nota": 3
+  }
+]
