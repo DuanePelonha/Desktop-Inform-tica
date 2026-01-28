@@ -288,7 +288,7 @@ section {
 .tech-news {
   display: flex;
   align-items: center;
-  background: #f1f5f9;
+  background: #f8fafc;
   border-top: 1px solid #e2e8f0;
   border-bottom: 1px solid #e2e8f0;
   overflow: hidden;
@@ -314,7 +314,7 @@ section {
   display: inline-flex;
   gap: 3rem;
   padding-left: 100%;
-  animation: scrollNews 30s linear infinite;
+  animation: scrollNews 35s linear infinite;
 }
 
 .news-track span {
@@ -324,13 +324,10 @@ section {
 }
 
 @keyframes scrollNews {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-100%);
-  }
+  from { transform: translateX(0); }
+  to { transform: translateX(-100%); }
 }
+
 
 
   </style>
@@ -341,21 +338,18 @@ section {
   <img src="Ativo 7.png" alt="Logo Desktop Informática" class="logo" />
 </header>
   
-  <section class="tech-news">
+<section class="tech-news">
   <div class="news-label">
     <i class="fas fa-bolt"></i> Tecnologia
   </div>
 
   <div class="news-ticker">
-    <div class="news-track">
-      <span>🔐 Golpes digitais aumentam em 2025: saiba como se proteger</span>
-      <span>💻 Windows 11 recebe atualização focada em desempenho</span>
-      <span>☁️ Backup em nuvem é essencial para pequenas empresas</span>
-      <span>📱 Celular lento? Veja os principais motivos</span>
-      <span>🛡️ Antivírus ainda é importante? Especialistas explicam</span>
+    <div class="news-track" id="newsTrack">
+      <span>Carregando notícias...</span>
     </div>
   </div>
 </section>
+
 
 
   <section class="cards">
@@ -477,6 +471,7 @@ section {
 
 </body>
 </html>
+
 
 
 
