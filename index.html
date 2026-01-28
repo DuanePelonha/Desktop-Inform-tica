@@ -468,9 +468,31 @@ section {
     slides[index].classList.add('active');
   }, 4000);
 </script>
+<script>
+const rssUrl = 'https://tecnoblog.net/feed/';
+const api = `https://api.rss2json.com/v1/api.json?rss_url=${rssUrl}`;
+
+fetch(api)
+  .then(res => res.json())
+  .then(data => {
+    const track = document.getElementById('newsTrack');
+    track.innerHTML = '';
+
+    data.items.slice(0, 6).forEach(item => {
+      const span = document.createElement('span');
+      span.innerHTML = `📰 <a href="${item.link}" target="_blank">${item.title}</a>`;
+      track.appendChild(span);
+    });
+  })
+  .catch(() => {
+    document.getElementById('newsTrack').innerHTML =
+      '<span>⚠️ Não foi possível carregar notícias no momento</span>';
+  });
+</script>
 
 </body>
 </html>
+
 
 
 
