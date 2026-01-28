@@ -10,7 +10,8 @@
 
   gtag('config', 'G-CBBWMWN2DK');
 </script>
-  
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <style>
     body {
       font-family: Arial, sans-serif;
@@ -25,10 +26,17 @@
       text-align: center;
     }
 
-    .logo {
-      max-width: 900px;
-      width: 100%;
-    }
+.logo {
+  max-width: 900px;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .logo {
+    max-width: 90%;
+  }
+}
+
 
     h1, h2 {
       text-align: center;
@@ -157,7 +165,53 @@
   color: #020617;
   transform: translateX(-4px);
 }
+@media (max-width: 768px) {
+  header.top-bar {
+    padding: 0.8rem;
+  }
 
+  .btn-voltar {
+    font-size: 0.9rem;
+    padding: 0.45rem 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 1.6rem;
+  }
+
+  h2 {
+    font-size: 1.3rem;
+  }
+}
+@media (max-width: 768px) {
+  .sobre-nos {
+    padding: 1.2rem;
+    margin: 1rem;
+  }
+
+  .sobre-nos p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+}
+@media (max-width: 768px) {
+  .orcamento-box input,
+  .orcamento-box textarea {
+    font-size: 1rem;
+    padding: 0.9rem;
+  }
+
+  .orcamento-box button {
+    font-size: 1.05rem;
+    padding: 0.9rem;
+  }
+}
+.mapa-box iframe {
+  width: 100%;
+  border-radius: 12px;
+}
 
   </style>
 </head>
@@ -242,6 +296,7 @@
 
 </body>
 </html>
+
 
 
 
