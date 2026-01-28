@@ -285,50 +285,64 @@ section {
   to { opacity: 1; transform: translateY(0); }
 }
 
-.tech-news {
-  display: flex;
-  align-items: center;
+.tech-carousel {
+  padding: 3rem 1.5rem;
   background: #f8fafc;
-  border-top: 1px solid #e2e8f0;
-  border-bottom: 1px solid #e2e8f0;
-  overflow: hidden;
 }
 
-.news-label {
-  background: #2563eb;
-  color: white;
-  padding: 0.6rem 1rem;
-  font-weight: bold;
-  white-space: nowrap;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.news-ticker {
-  flex: 1;
-  overflow: hidden;
-}
-
-.news-track {
-  display: inline-flex;
-  gap: 3rem;
-  padding-left: 100%;
-  animation: scrollNews 35s linear infinite;
-}
-
-.news-track span {
+.tech-carousel h2 {
+  text-align: center;
+  margin-bottom: 2rem;
   color: #0f172a;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding-bottom: 1rem;
+}
+
+.carousel-track::-webkit-scrollbar {
+  display: none;
+}
+
+.news-card {
+  min-width: 280px;
+  max-width: 280px;
+  background: white;
+  border-radius: 14px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  overflow: hidden;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.news-card:hover {
+  transform: translateY(-6px);
+}
+
+.news-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+
+.news-card .content {
+  padding: 1rem;
+}
+
+.news-card a {
+  text-decoration: none;
+  color: #0f172a;
+  font-weight: bold;
   font-size: 0.95rem;
-  white-space: nowrap;
 }
 
-@keyframes scrollNews {
-  from { transform: translateX(0); }
-  to { transform: translateX(-100%); }
+.news-card a:hover {
+  color: #2563eb;
 }
-
-
 
   </style>
 </head>
@@ -338,17 +352,14 @@ section {
   <img src="Ativo 7.png" alt="Logo Desktop Informática" class="logo" />
 </header>
   
-<section class="tech-news">
-  <div class="news-label">
-    <i class="fas fa-bolt"></i> Tecnologia
-  </div>
+<section class="tech-carousel">
+  <h2>📰 Notícias de Tecnologia</h2>
 
-  <div class="news-ticker">
-    <div class="news-track" id="newsTrack">
-      <span>Carregando notícias...</span>
-    </div>
+  <div class="carousel-track" id="newsCarousel">
+    <div class="news-card">Carregando notícias...</div>
   </div>
 </section>
+
 
 
 
@@ -468,6 +479,7 @@ section {
     slides[index].classList.add('active');
   }, 4000);
 </script>
+  
 <script>
 const rssUrl = 'https://tecnoblog.net/feed/';
 const api = `https://api.rss2json.com/v1/api.json?rss_url=${rssUrl}`;
@@ -475,23 +487,35 @@ const api = `https://api.rss2json.com/v1/api.json?rss_url=${rssUrl}`;
 fetch(api)
   .then(res => res.json())
   .then(data => {
-    const track = document.getElementById('newsTrack');
-    track.innerHTML = '';
+    const carousel = document.getElementById('newsCarousel');
+    carousel.innerHTML = '';
 
     data.items.slice(0, 6).forEach(item => {
-      const span = document.createElement('span');
-      span.innerHTML = `📰 <a href="${item.link}" target="_blank">${item.title}</a>`;
-      track.appendChild(span);
+      const card = document.createElement('div');
+      card.className = 'news-card';
+
+      const image = item.thumbnail || 'https://via.placeholder.com/400x200?text=Tecnologia';
+
+      card.innerHTML = `
+        <img src="${image}" alt="Notícia de tecnologia">
+        <div class="content">
+          <a href="${item.link}" target="_blank">${item.title}</a>
+        </div>
+      `;
+
+      carousel.appendChild(card);
     });
   })
   .catch(() => {
-    document.getElementById('newsTrack').innerHTML =
-      '<span>⚠️ Não foi possível carregar notícias no momento</span>';
+    document.getElementById('newsCarousel').innerHTML =
+      '<div class="news-card">Erro ao carregar notícias</div>';
   });
 </script>
 
+
 </body>
 </html>
+
 
 
 
