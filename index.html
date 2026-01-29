@@ -285,63 +285,65 @@ section {
   to { opacity: 1; transform: translateY(0); }
 }
 
-.tech-carousel {
+.tech-news-card {
   padding: 3rem 1.5rem;
   background: #f8fafc;
-}
-
-.tech-carousel h2 {
-  text-align: center;
-  margin-bottom: 2rem;
-  color: #0f172a;
-}
-
-.carousel-track {
   display: flex;
-  gap: 1.5rem;
-  overflow-x: auto;
-  scroll-behavior: smooth;
-  padding-bottom: 1rem;
+  flex-direction: column;
+  align-items: center;
 }
 
-.carousel-track::-webkit-scrollbar {
-  display: none;
+.tech-news-card h2 {
+  color: #0f172a;
+  margin-bottom: 1.5rem;
 }
 
-.news-card {
-  min-width: 280px;
-  max-width: 280px;
+.news-box {
+  width: 100%;
+  max-width: 900px;
+  height: 260px;
   background: white;
-  border-radius: 14px;
+  border-radius: 16px;
   box-shadow: 0 10px 25px rgba(0,0,0,0.08);
   overflow: hidden;
-  flex-shrink: 0;
-  transition: transform 0.3s ease;
+  position: relative;
 }
 
-.news-card:hover {
-  transform: translateY(-6px);
+.news-list {
+  display: flex;
+  flex-direction: column;
+  animation: scrollVertical 25s linear infinite;
 }
 
-.news-card img {
-  width: 100%;
-  height: 160px;
+.news-item {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  align-items: center;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.news-item img {
+  width: 90px;
+  height: 60px;
   object-fit: cover;
+  border-radius: 8px;
 }
 
-.news-card .content {
-  padding: 1rem;
-}
-
-.news-card a {
-  text-decoration: none;
+.news-item a {
   color: #0f172a;
-  font-weight: bold;
+  font-weight: 600;
+  text-decoration: none;
   font-size: 0.95rem;
 }
 
-.news-card a:hover {
+.news-item a:hover {
   color: #2563eb;
+}
+
+@keyframes scrollVertical {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-50%); }
 }
 
   </style>
@@ -352,16 +354,15 @@ section {
   <img src="Ativo 7.png" alt="Logo Desktop Informática" class="logo" />
 </header>
   
-<section class="tech-carousel">
+<section class="tech-news-card">
   <h2>📰 Notícias de Tecnologia</h2>
 
-  <div class="carousel-track" id="newsCarousel">
-    <div class="news-card">Carregando notícias...</div>
+  <div class="news-box">
+    <div class="news-list" id="newsList">
+      <div class="news-item">Carregando notícias...</div>
+    </div>
   </div>
 </section>
-
-
-
 
   <section class="cards">
     <a href="manutencao.html" class="card">
@@ -487,34 +488,36 @@ const api = `https://api.rss2json.com/v1/api.json?rss_url=${rssUrl}`;
 fetch(api)
   .then(res => res.json())
   .then(data => {
-    const carousel = document.getElementById('newsCarousel');
-    carousel.innerHTML = '';
+    const list = document.getElementById('newsList');
+    list.innerHTML = '';
 
     data.items.slice(0, 6).forEach(item => {
-      const card = document.createElement('div');
-      card.className = 'news-card';
+      const div = document.createElement('div');
+      div.className = 'news-item';
 
-      const image = item.thumbnail || 'https://via.placeholder.com/400x200?text=Tecnologia';
+      const image = item.thumbnail || 'https://via.placeholder.com/180x120?text=Tech';
 
-      card.innerHTML = `
-        <img src="${image}" alt="Notícia de tecnologia">
-        <div class="content">
-          <a href="${item.link}" target="_blank">${item.title}</a>
-        </div>
+      div.innerHTML = `
+        <img src="${image}" alt="Notícia">
+        <a href="${item.link}" target="_blank">${item.title}</a>
       `;
 
-      carousel.appendChild(card);
+      list.appendChild(div);
     });
+
+    // Duplica para rolagem infinita suave
+    list.innerHTML += list.innerHTML;
   })
   .catch(() => {
-    document.getElementById('newsCarousel').innerHTML =
-      '<div class="news-card">Erro ao carregar notícias</div>';
+    document.getElementById('newsList').innerHTML =
+      '<div class="news-item">Erro ao carregar notícias</div>';
   });
 </script>
 
 
 </body>
 </html>
+
 
 
 
