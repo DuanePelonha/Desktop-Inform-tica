@@ -285,66 +285,94 @@ section {
   to { opacity: 1; transform: translateY(0); }
 }
 
-.tech-news-card {
+.news-portal {
   padding: 3rem 1.5rem;
   background: #f8fafc;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
-.tech-news-card h2 {
+.news-portal h2 {
+  text-align: center;
+  margin-bottom: 2rem;
   color: #0f172a;
-  margin-bottom: 1.5rem;
 }
 
-.news-box {
-  width: 100%;
-  max-width: 900px;
-  height: 260px;
-  background: white;
-  border-radius: 16px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-  overflow: hidden;
+.news-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1.5rem;
+}
+
+.news-main {
   position: relative;
+  border-radius: 16px;
+  overflow: hidden;
 }
 
-.news-list {
+.news-main img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.news-main .overlay {
+  position: absolute;
+  bottom: 0;
+  padding: 1.5rem;
+  width: 100%;
+  background: linear-gradient(to top, rgba(0,0,0,.75), transparent);
+}
+
+.news-main a {
+  color: white;
+  font-size: 1.4rem;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.news-side {
   display: flex;
   flex-direction: column;
-  animation: scrollVertical 25s linear infinite;
-}
-
-.news-item {
-  display: flex;
   gap: 1rem;
-  padding: 1rem 1.5rem;
-  align-items: center;
-  border-bottom: 1px solid #e2e8f0;
 }
 
-.news-item img {
-  width: 90px;
-  height: 60px;
+.news-card {
+  display: flex;
+  gap: 0.75rem;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 15px rgba(0,0,0,.08);
+}
+
+.news-card img {
+  width: 120px;
   object-fit: cover;
-  border-radius: 8px;
 }
 
-.news-item a {
-  color: #0f172a;
+.news-card a {
+  padding: 0.75rem;
   font-weight: 600;
+  color: #0f172a;
   text-decoration: none;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
 }
 
-.news-item a:hover {
+.news-card a:hover {
   color: #2563eb;
 }
 
-@keyframes scrollVertical {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(-50%); }
+@media (max-width: 768px) {
+  .news-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .news-main {
+    height: 280px;
+  }
 }
+
 
   </style>
 </head>
@@ -354,15 +382,14 @@ section {
   <img src="Ativo 7.png" alt="Logo Desktop Informática" class="logo" />
 </header>
   
-<section class="tech-news-card">
-  <h2>📰 Notícias de Tecnologia</h2>
+<section class="news-portal">
+  <h2>📰 Destaques de Tecnologia</h2>
 
-  <div class="news-box">
-    <div class="news-list" id="newsList">
-      <div class="news-item">Carregando notícias...</div>
-    </div>
+  <div class="news-grid" id="newsGrid">
+    <div class="news-loading">Carregando notícias...</div>
   </div>
 </section>
+
 
   <section class="cards">
     <a href="manutencao.html" class="card">
@@ -488,35 +515,47 @@ const api = `https://api.rss2json.com/v1/api.json?rss_url=${rssUrl}`;
 fetch(api)
   .then(res => res.json())
   .then(data => {
-    const list = document.getElementById('newsList');
-    list.innerHTML = '';
+    const grid = document.getElementById('newsGrid');
+    grid.innerHTML = '';
 
-    data.items.slice(0, 6).forEach(item => {
-      const div = document.createElement('div');
-      div.className = 'news-item';
+    const main = data.items[0];
+    const imageMain = main.thumbnail || 'https://via.placeholder.com/800x500';
 
-      const image = item.thumbnail || 'https://via.placeholder.com/180x120?text=Tech';
+    // Destaque principal
+    grid.innerHTML = `
+      <div class="news-main">
+        <img src="${imageMain}">
+        <div class="overlay">
+          <a href="${main.link}" target="_blank">${main.title}</a>
+        </div>
+      </div>
+      <div class="news-side" id="sideNews"></div>
+    `;
 
-      div.innerHTML = `
-        <img src="${image}" alt="Notícia">
-        <a href="${item.link}" target="_blank">${item.title}</a>
+    const side = document.getElementById('sideNews');
+
+    data.items.slice(1, 4).forEach(item => {
+      const image = item.thumbnail || 'https://via.placeholder.com/300x200';
+
+      side.innerHTML += `
+        <div class="news-card">
+          <img src="${image}">
+          <a href="${item.link}" target="_blank">${item.title}</a>
+        </div>
       `;
-
-      list.appendChild(div);
     });
-
-    // Duplica para rolagem infinita suave
-    list.innerHTML += list.innerHTML;
   })
   .catch(() => {
-    document.getElementById('newsList').innerHTML =
-      '<div class="news-item">Erro ao carregar notícias</div>';
+    document.getElementById('newsGrid').innerHTML =
+      '<p>Não foi possível carregar notícias no momento.</p>';
   });
 </script>
 
 
+
 </body>
 </html>
+
 
 
 
